@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEADS - Premium CRM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              amber: {
+                50: '#fefce8', 100: '#fef9c3', 200: '#fef08a', 300: '#fde047', 
+                400: '#facc15', 500: '#eab308', 600: '#ca8a04', 700: '#a16207', 
+                800: '#854d0e', 900: '#713f12',
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* High-performance targeted transitions for 70fps smoothness */
+        body, 
+        header, 
+        main, 
+        nav, 
+        footer, 
+        table, 
+        tr, 
+        td, 
+        th, 
+        input, 
+        select, 
+        button,
+        .bg-white,
+        .bg-gray-50,
+        .dark .bg-black,
+        .dark .bg-white\/5 {
+            transition-property: background-color, border-color, color, box-shadow;
+            transition-duration: 350ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-color: #fdfdfd;
+        }
+        .dark body { background-color: #000000; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        
+        .gold-glow { text-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+        
+        .pinned-shadow::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 12px;
+            pointer-events: none;
+            background: linear-gradient(to right, rgba(0,0,0,0.05), transparent);
+            z-index: 10;
+        }
+        .dark .pinned-shadow::after {
+            background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
+        }
+
+        .select-ios {
+          appearance: none;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' fill-opacity='0.8'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 8px center;
+          background-size: 16px;
+          padding-right: 28px !important;
+        }
+        .dark .select-ios {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' fill-opacity='0.8'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+        }
+        
+        table { border-collapse: separate; border-spacing: 0; width: 100%; table-layout: auto; }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        /* Prevent layout shift during theme switch */
+        .will-change-theme {
+            will-change: background-color, color, border-color;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-[#fdfdfd] dark:bg-[#000000] will-change-theme">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

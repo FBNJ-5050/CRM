@@ -1,0 +1,7 @@
+{
+  "name": "Luxury CRM - Leads Intake",
+  "description": "A premium, high-performance Leads Intake dashboard for luxury CRM workflows. Features sticky headers, pinned columns, smart sorting, and bulk actions in a sophisticated gold and charcoal interface.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
