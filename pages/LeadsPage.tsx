@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Lead, SortState, Density, ColumnConfig, Status, State } from '../types';
 import { supabase } from '../supabase';
 import Header from '../components/Header';
+import NavBar from '../components/NavBar';
 import Filters from '../components/Filters';
 import LeadTable from '../components/LeadTable';
 import ColumnManager from '../components/ColumnManager';
@@ -156,6 +157,7 @@ const LeadsPage: React.FC = () => {
     return (
         <div className="h-screen bg-[#fdfdfd] text-[#1a1a1a] dark:bg-[#000000] dark:text-gray-100 flex flex-col overflow-hidden">
             <Header leads={leads} isDarkMode={isDarkMode} toggleTheme={() => setIsDarkMode(!isDarkMode)} />
+            <NavBar />
 
             <div className="bg-white dark:bg-[#000000] px-6 py-2 border-b border-gray-100 dark:border-white/5 flex items-center shadow-sm z-[200]">
                 <Filters
