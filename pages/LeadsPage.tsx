@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { Lead, SortState, Density, ColumnConfig, Status, State } from '../types';
-import { MOCK_LEADS } from '../mockData';
+import { supabase } from '../supabase';
 import Header from '../components/Header';
 import Filters from '../components/Filters';
 import LeadTable from '../components/LeadTable';
@@ -55,8 +55,7 @@ const DEFAULT_COLUMNS: ColumnConfig[] = [
 ];
 
 const LeadsPage: React.FC = () => {
-    const [leads, setLeads] = useState<Lead[]>(MOCK_LEADS);
-    const [isLoading, setIsLoading] = useState(true);
+    const [leads, setLeads] = useState<Lead[]>([]); const [isLoading, setIsLoading] = useState(true);
     const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
     const [density, setDensity] = useState<Density>(() => (localStorage.getItem('density') as Density) || 'Comfortable');
     const [visibleColumns, setVisibleColumns] = useState<ColumnConfig[]>(() => {
@@ -73,8 +72,29 @@ const LeadsPage: React.FC = () => {
     const [sort, setSort] = useState<SortState>({ column: 'email_received_at', direction: 'desc' });
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 800);
-        return () => clearTimeout(timer);
+        const fetchLeads = async () => {
+            setIsLoading(true);
+            try {
+                const { data, error } = await supabase
+                    .from('lead_intake')
+                    .select('*')
+                    .order('email_received_at', { ascending: false });
+
+                if (error) {
+                    console.error('Supabase fetch error:', error);
+                    setLeads([]);
+                } else {
+                    setLeads((data ?? []) as Lead[]);
+                }
+            } catch (err) {
+                console.error('Supabase fetch error:', err);
+                setLeads([]);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchLeads();
     }, []);
 
     useEffect(() => {
